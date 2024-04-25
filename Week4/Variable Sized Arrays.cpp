@@ -1,27 +1,22 @@
-4,#include <iostream>
-#include <vector>
-using namespace std;
-
+#include <stdio.h>
+int abs(int c){
+    if(c>0) return c;
+    return -c;
+}
+void update(int *a,int *b) {
+    int c=*a+*b;
+    int d=abs(*a-*b);
+    *a=c;
+    *b=d;
+}
 
 int main() {
-    int n,k;
-    cin>>n>>k;
-     vector<vector<int>> vt(n);
-      int index=0;
-     while (n--){
-        int x;
-        cin>>x;
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
 
-     for(int i=0; i<x; i++){
-            int a; cin>>a;
-            vt[index].push_back(a);
-        }
-        index++;
-     }
-     while(k--){
-        int a, b;
-        cin>>a>>b;
-        cout<<vt[a][b]<<endl;
-     }
     return 0;
 }
