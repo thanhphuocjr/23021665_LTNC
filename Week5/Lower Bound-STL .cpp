@@ -3,28 +3,32 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <set>
 using namespace std;
 
-
+set<int> se;
+vector<string> vt;
 int main() {
   int n;
-  cin>>n;
-  int a[n+5];
-  for(int i=1; i<=n; i++){
-    cin>>a[i];
-  }
-  int k;
-  cin>>k;
-  while (k--){
-    int x;
-    cin>>x;
-    int *pos1=lower_bound(a+1,a+n+1,x);
-    int *pos2=upper_bound(a+1,a+n+1,x);
-    if(*pos1==*(pos2-1) && pos1!=a+n+1){
-      cout<<"Yes "<<pos1-a<<endl;
-    }else{
-      cout<<"No "<<pos2-a<<endl;
+    cin>>n;
+    while(n--){
+        int a, b;
+        cin>>a>>b;
+        if(a==1){
+            se.insert(b);
+        }else if(a==2){
+            se.erase(b);
+        }else{
+            auto it=se.find(b);
+            if(it!=se.end()){
+                vt.push_back("Yes");
+            }else{
+                vt.push_back("No");
+            }
+        }
     }
-  }
+    for(auto x: vt){
+        cout<<x<<endl;
+    }
     return 0;
 }
