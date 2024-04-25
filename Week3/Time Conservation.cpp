@@ -1,44 +1,41 @@
-#include <bits/stdc++.h>
-
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include<string>
+#include<sstream>
+#include<map>
+#include<set>
+#include<map>
+#include<bits/stdc++.h>
 using namespace std;
-
+bool check1(int arr[],int dai,int n){
+  for(int i=0; i<dai ; i++){
+    if(n%arr[i]!=0) return false;
+  }
+  return true;
+}
+bool check2(int arr[],int dai,int n){
+  for(int i=0; i<dai ; i++){
+    if(arr[i]%n!=0) return false;
+  }
+  return true;
+}
 int main(){
-  string s;
-  int res;
-  cin>>s;
-  int dai=s.size();
-  string time=s.substr(dai-2);
-  string ans="";
-  for(int i=0; i<(int)s.size(); i++){
-    if(s[i]==':'){
-      res=i;
-      break;
-    }else{
-      ans+=s[i];
-    }
+  int n,m;
+  cin>>n>>m;
+  int a[n], b[m];
+  for(int i=0; i<n; i++){
+    cin>>a[i];
   }
-  string phutgiay=s.substr(res,dai-res-2);
-  int a=stoi(ans);
-  if(time=="PM"){
-    if(a<12){
-      a+=12;
-    }
-    cout<<a<<phutgiay;
+  sort(a, a+n);
+  for(int i=0; i<m; i++){
+    cin>>b[i];x
   }
-  else
-  {
-    if(a>=12){
-    a-=12;
-    
+  sort(b, b+n);
+  int dem=0;
+  for(int i=a[0];i<=b[m-1]; i++){
+    if(check1(a,n,i)&& check2(b,m,i)) dem++;
   }
-  string phuoc=to_string(a);
-  if(phuoc.size()<2){
-    phuoc="0"+phuoc;
-  }
-  cout<<phuoc<<phutgiay;
-    
-  }
-  
-  
- return 0;
+  cout<<dem;
 }
