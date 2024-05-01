@@ -23,19 +23,19 @@ class SinglyLinkedList {
             this->tail = nullptr;
         }
 
-        void insert_node(int node_data) {
-            SinglyLinkedListNode* node = new SinglyLinkedListNode(node_data);
-
-            if (!this->head) {
-                this->head = node;
-            } else {
-                this->tail->next = node;
-            }
-
-            this->tail = node;
-        }
 };
 
+void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
+    while (node) {
+        fout << node->data;
+
+        node = node->next;
+
+        if (node) {
+            fout << sep;
+        }
+    }
+}
 
 void free_singly_linked_list(SinglyLinkedListNode* node) {
     while (node) {
@@ -45,15 +45,30 @@ void free_singly_linked_list(SinglyLinkedListNode* node) {
         free(temp);
     }
 }
-void printLinkedList(SinglyLinkedListNode* head) {
-    while (head != NULL){
-        cout << head->data << endl;
-        head = head->next;
-    }
+
+// Complete the insertNodeAtHead function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode* next;
+ * };
+ *
+ */
+SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
+    SinglyLinkedListNode* newNode = new SinglyLinkedListNode(data);
+    newNode->data = data;
+    newNode->next = llist;
+    llist = newNode;
+    return llist;
 }
 
 int main()
 {
+    ofstream fout(getenv("OUTPUT_PATH"));
+
     SinglyLinkedList* llist = new SinglyLinkedList();
 
     int llist_count;
@@ -64,11 +79,17 @@ int main()
         int llist_item;
         cin >> llist_item;
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        llist->insert_node(llist_item);
+    
+          SinglyLinkedListNode* llist_head = insertNodeAtHead(llist->head, llist_item);
+        llist->head = llist_head;
     }
 
-    printLinkedList(llist->head);
+    print_singly_linked_list(llist->head, "\n", fout);
+    fout << "\n";
+
+    free_singly_linked_list(llist->head);
+
+    fout.close();
 
     return 0;
 }
