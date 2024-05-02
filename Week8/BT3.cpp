@@ -1,95 +1,33 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <iomanip>
+#include <limits>
 
 using namespace std;
 
-class SinglyLinkedListNode {
-    public:
-        int data;
-        SinglyLinkedListNode *next;
+int main() {
+    int i = 4;
+    double d = 4.0;
+    string s = "HackerRank ";
 
-        SinglyLinkedListNode(int node_data) {
-            this->data = node_data;
-            this->next = nullptr;
-        }
-};
-
-class SinglyLinkedList {
-    public:
-        SinglyLinkedListNode *head;
-        SinglyLinkedListNode *tail;
-
-        SinglyLinkedList() {
-            this->head = nullptr;
-            this->tail = nullptr;
-        }
-
-};
-
-void print_singly_linked_list(SinglyLinkedListNode* node, string sep, ofstream& fout) {
-    while (node) {
-        fout << node->data;
-
-        node = node->next;
-
-        if (node) {
-            fout << sep;
-        }
-    }
-}
-
-void free_singly_linked_list(SinglyLinkedListNode* node) {
-    while (node) {
-        SinglyLinkedListNode* temp = node;
-        node = node->next;
-
-        free(temp);
-    }
-}
-
-// Complete the insertNodeAtHead function below.
-
-/*
- * For your reference:
- *
- * SinglyLinkedListNode {
- *     int data;
- *     SinglyLinkedListNode* next;
- * };
- *
- */
-SinglyLinkedListNode* insertNodeAtHead(SinglyLinkedListNode* llist, int data) {
-    SinglyLinkedListNode* newNode = new SinglyLinkedListNode(data);
-    newNode->data = data;
-    newNode->next = llist;
-    llist = newNode;
-    return llist;
-}
-
-int main()
-{
-    ofstream fout(getenv("OUTPUT_PATH"));
-
-    SinglyLinkedList* llist = new SinglyLinkedList();
-
-    int llist_count;
-    cin >> llist_count;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    for (int i = 0; i < llist_count; i++) {
-        int llist_item;
-        cin >> llist_item;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
     
-          SinglyLinkedListNode* llist_head = insertNodeAtHead(llist->head, llist_item);
-        llist->head = llist_head;
-    }
-
-    print_singly_linked_list(llist->head, "\n", fout);
-    fout << "\n";
-
-    free_singly_linked_list(llist->head);
-
-    fout.close();
-
+    // Declare second integer, double, and String variables.
+    
+    // Read and save an integer, double, and String to your variables.
+    // Note: If you have trouble reading the entire string, please go back and review the Tutorial closely.
+    
+    // Print the sum of both integer variables on a new line.
+    
+    // Print the sum of the double variables on a new line.
+    
+    // Concatenate and print the String variables on a new line
+    // The 's' variable above should be printed first.
+int a; double b;
+cin>>a>>b;
+cin.ignore();
+string n;
+getline(cin,n);
+cout<<a+i<<endl;
+cout<<fixed<<setprecision(1)<<d+b; cout<<endl;
+cout<<s<<n;
     return 0;
 }
