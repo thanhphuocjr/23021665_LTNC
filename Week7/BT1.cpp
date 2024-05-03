@@ -1,34 +1,36 @@
-#include<iostream>
+#include <cmath>
+#include <iostream>
+#include <exception>
+#include <stdexcept>
 using namespace std;
-int a[10008];
-bool check(int a[],int n, int x){
-    bool check1=false;
-    int left=0; int right=n-1;
-    while(left<=right){
-        int mid=(left+right)/2;
-        if(a[mid]<x){
-            left=mid+1;
-        }else if (a[mid]>x){
-            right=mid;
-        }else{
-            check1=true;
-            break;
-        }
-    }
-    return check1;
-}
 
+//Write your code here
+ class Calculator{
+   public:
+   int power(int n, int p){
+     if(n<0 || p<0){
+       throw invalid_argument("n and p should be non-negative");
+     }
+     return pow(n,p);
+   }
+   
+ };
 
-int main(){
-    int n; int x;
-    cin>>n>>x;
-
-    for(int i=0; i<n; i++){
-        cin>>a[i];
+int main()
+{
+    Calculator myCalculator=Calculator();
+    int T,n,p;
+    cin>>T;
+    while(T-->0){
+      if(scanf("%d %d",&n,&p)==2){
+         try{
+               int ans=myCalculator.power(n,p);
+               cout<<ans<<endl;
+         }
+         catch(exception& e){
+             cout<<e.what()<<endl;
+         }
+      }
     }
-    if(check(a, n, x)){
-        cout<<"YES";
-    }else{
-        cout<<"NO";
-    }
+    
 }
